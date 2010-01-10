@@ -1,0 +1,13 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.raptor</groupId>
+  <artifactId>raptor</artifactId>
+  <name>Raptor</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>A small framwork to detect file system changes</description>
+  <url>http://github.com/schildmeijer/raptor</url>
+  <organization>
+  	<name>Roger Schildmeijer</name>
+  	<url>http://www.linkedin.com/pub/roger-schildmeijer/3/7a8/b49</url>
+  </organization>
+</project>
