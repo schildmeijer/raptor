@@ -24,12 +24,16 @@ public class FileMonitorImpl implements FileMonitor {
 
 	public void registerFileObserver(File fileToObserve, FileObserver listener) {
 		fileStatuses.put(fileToObserve, fileToObserve.lastModified());
-		
+
 		synchronized (observers) {
 			observers.put(fileToObserve, listener);
 			if (observers.size() == 1) {
 				scheduler = Executors.newSingleThreadScheduledExecutor();
-				scheduler.scheduleAtFixedRate(filesPoller, 0 /*initial delay*/, checkInterval, TimeUnit.MILLISECONDS);
+				scheduler.scheduleAtFixedRate(
+						filesPoller, 0 /*initial delay*/, 
+						checkInterval, 
+						TimeUnit.MILLISECONDS
+				);
 			}
 		}
 
@@ -44,19 +48,19 @@ public class FileMonitorImpl implements FileMonitor {
 			}
 		}
 	}
-	
+
 	private Runnable filesPoller = new Runnable() {
 
 		public void run() {
 			synchronized (observers) {
-					for (File file: observers.keySet()) {
-						if (file.lastModified() != fileStatuses.get(file)) {
-							// file has changed. 
-							fileStatuses.put(file, file.lastModified());
-							FileObserver observer = observers.get(file);
-							observer.fileChanged(file);
-						}
+				for (File file: observers.keySet()) {
+					if (file.lastModified() != fileStatuses.get(file)) {
+						// file has changed. 
+						fileStatuses.put(file, file.lastModified());
+						FileObserver observer = observers.get(file);
+						observer.fileChanged(file);
 					}
+				}
 			}
 
 		}

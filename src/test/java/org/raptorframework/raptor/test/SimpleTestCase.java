@@ -56,7 +56,8 @@ public class SimpleTestCase {
 		
 		fm.unregisterFileObserver(fileToObserve); // clean up
 		
-		assertTrue("Did not receive any fileChanged callback. (Maybe the file did not change within time limit: 30s)", value.get() != 0);
+		assertTrue("Did not receive any fileChanged callback. " +
+				"(Maybe the file did not change within time limit: 30s)", value.get() != 0);
 	}
 }
  
