@@ -45,6 +45,7 @@ public class FileMonitorImpl implements FileMonitor {
 			observers.remove(observedFile);
 			if (observers.isEmpty()) {
 				scheduler.shutdown();
+				scheduler = null;
 			}
 		}
 	}
