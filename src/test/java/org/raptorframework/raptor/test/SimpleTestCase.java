@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 import org.raptorframework.raptor.FileMonitor;
-import org.raptorframework.raptor.FileMonitorImpl;
+import org.raptorframework.raptor.AsyncFileMonitor;
 import org.raptorframework.raptor.FileObserver;
 
 /**
@@ -29,7 +29,7 @@ public class SimpleTestCase {
 	
 	@Test
 	public void simpleFileChangeTest() {
-		FileMonitor fm = new FileMonitorImpl();
+		FileMonitor fm = new AsyncFileMonitor();
 		
 		File fileToObserve = new File (path);
 		final AtomicInteger value = new AtomicInteger(0);

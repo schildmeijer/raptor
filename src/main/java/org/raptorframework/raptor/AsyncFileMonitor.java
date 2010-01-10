@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author Roger Schildmeijer
  *
  */
-public class FileMonitorImpl implements FileMonitor {
+public class AsyncFileMonitor implements FileMonitor {
 
 	private final Map<File, FileObserver> observers = new HashMap<File, FileObserver>();
 	private final Map<File, Long> fileStatuses = new HashMap<File, Long>();
