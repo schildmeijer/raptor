@@ -19,13 +19,14 @@ public class FileMonitorImpl implements FileMonitor {
 	private final Map<File, FileObserver> observers = new HashMap<File, FileObserver>();
 	private final Map<File, Long> fileStatuses = new HashMap<File, Long>();
 	private final long checkInterval = 1000 * 1; /* ms */
+	private final Object lock = new Object();
 
 	private ScheduledExecutorService scheduler;
 
 	public void registerFileObserver(File fileToObserve, FileObserver listener) {
 		fileStatuses.put(fileToObserve, fileToObserve.lastModified());
 
-		synchronized (observers) {
+		synchronized (lock) {
 			observers.put(fileToObserve, listener);
 			if (observers.size() == 1) {
 				scheduler = Executors.newSingleThreadScheduledExecutor();
@@ -40,7 +41,7 @@ public class FileMonitorImpl implements FileMonitor {
 	}
 
 	public void unregisterFileObserver(File observedFile) {
-		synchronized (observers) {
+		synchronized (lock) {
 			fileStatuses.remove(observedFile);
 			observers.remove(observedFile);
 			if (observers.isEmpty()) {
@@ -53,7 +54,7 @@ public class FileMonitorImpl implements FileMonitor {
 	private Runnable filesPoller = new Runnable() {
 
 		public void run() {
-			synchronized (observers) {
+			synchronized (lock) {
 				for (File file: observers.keySet()) {
 					if (file.lastModified() != fileStatuses.get(file)) {
 						// file has changed. 
