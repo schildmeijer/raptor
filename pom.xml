@@ -12,13 +12,14 @@
 	<url>http://github.com/schildmeijer/raptor</url>
 
 	<developers>
-		<developer>Roger Schildmeijer</developer>
+		<developer>
+			<name>Roger Schildmeijer</name>
+			<id>0</id>
+			<url>http://www.linkedin.com/pub/roger-schildmeijer/3/7a8/b49</url>
+			<email>schildmeijer[@]gmail.com</email>
+			<timezone>1</timezone>
+		</developer>
 	</developers>
-
-	<organization>
-		<name>Roger Schildmeijer</name>
-		<url>http://www.linkedin.com/pub/roger-schildmeijer/3/7a8/b49</url>
-	</organization>
 
 	<build>
 		<plugins>
