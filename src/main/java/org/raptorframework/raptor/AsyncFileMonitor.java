@@ -70,8 +70,7 @@ public class AsyncFileMonitor implements FileMonitor {
 	
 	private void fileChanged(File file) {
 		fileStatuses.put(file, file.lastModified());
-		FileObserver observer = observers.get(file);
-		observer.fileChanged(file);
+		observers.get(file).fileChanged(file);
 	}
 
 }
