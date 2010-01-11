@@ -3,26 +3,40 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.raptor</groupId>
 	<artifactId>raptor</artifactId>
-	<name>Raptor</name>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>Raptor</name>
+	<inceptionYear>2010</inceptionYear>
+
 	<description>A library used to monitor file systems</description>
 	<url>http://github.com/schildmeijer/raptor</url>
+
+	<developers>
+		<developer>Roger Schildmeijer</developer>
+	</developers>
+
 	<organization>
 		<name>Roger Schildmeijer</name>
 		<url>http://www.linkedin.com/pub/roger-schildmeijer/3/7a8/b49</url>
 	</organization>
-	
+
 	<build>
 		<plugins>
+
+			<!-- Setup the build for JAVA 1.6  -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+					<optimize>true</optimize>
+					<debug>true</debug>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
