@@ -5,7 +5,7 @@
 	<artifactId>raptor</artifactId>
 	<name>Raptor</name>
 	<version>0.0.1-SNAPSHOT</version>
-	<description>A library used to detect file system changes</description>
+	<description>A library used to monitor file systems</description>
 	<url>http://github.com/schildmeijer/raptor</url>
 	<organization>
 		<name>Roger Schildmeijer</name>
