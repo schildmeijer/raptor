@@ -55,18 +55,23 @@ public class AsyncFileMonitor implements FileMonitor {
 
 		public void run() {
 			synchronized (lock) {
-				for (File file: observers.keySet()) {
-					if (file.lastModified() != fileStatuses.get(file)) {
-						// file has changed. 
-						fileStatuses.put(file, file.lastModified());
-						FileObserver observer = observers.get(file);
-						observer.fileChanged(file);
-					}
-				}
+				detectChanges();
 			}
-
 		}
-
 	};
+	
+	private void detectChanges() {
+		for (File candidate: observers.keySet()) {
+			if (candidate.lastModified() != fileStatuses.get(candidate)) {
+				fileChanged(candidate);
+			}
+		}
+	}
+	
+	private void fileChanged(File file) {
+		fileStatuses.put(file, file.lastModified());
+		FileObserver observer = observers.get(file);
+		observer.fileChanged(file);
+	}
 
 }
